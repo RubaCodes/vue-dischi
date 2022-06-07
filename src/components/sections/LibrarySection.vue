@@ -10,5 +10,23 @@ import axios from 'axios';
 export default {
   components: { AlbumCard },
   name: 'LibrarySection',
+  data() {
+    return {
+      albums: [],
+    };
+  },
+  created() {
+    axios
+      .get('https://flynn.boolean.careers/exercises/api/array/music')
+      .then((response) => {
+        // handle success
+        this.albums = response.data.response;
+        console.log(this.albums);
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      });
+  },
 };
 </script>
