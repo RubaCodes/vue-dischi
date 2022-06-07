@@ -1,9 +1,11 @@
 <template>
-  <div class="card text-center p-3 bg-slate-600">
+  <div class="card text-center p-5 bg-slate-600">
     <img class="w-full" :src="album.poster" :alt="album.title" />
-    <h2 class="text-white uppercase">{{ album.title }}</h2>
-    <div class="text-slate-500 capitalize">{{ album.artist }}</div>
-    <div class="text-slate-500">{{ album.year }}</div>
+    <h2 class="text-white uppercase text-xl font-bold pt-4">
+      {{ album.title }}
+    </h2>
+    <div class="text-slate-400 capitalize">{{ album.author }}</div>
+    <div class="text-slate-400">{{ album.year }}</div>
   </div>
 </template>
 
