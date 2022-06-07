@@ -25,7 +25,6 @@ export default {
       .then((response) => {
         // handle success
         this.albums = response.data.response;
-        console.log(this.albums);
       })
       .catch((error) => {
         // handle error
