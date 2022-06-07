@@ -6,6 +6,7 @@
 
 <script>
 import AlbumCard from '../blocks/AlbumCard.vue';
+import axios from 'axios';
 export default {
   components: { AlbumCard },
   name: 'LibrarySection',
