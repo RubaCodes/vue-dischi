@@ -1,6 +1,8 @@
 <template>
   <div>
-    <InputText></InputText>
+    <InputText
+      class="flex justify-center items-center mx-auto pb-4 gap-4"
+    ></InputText>
     <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-x-8 gap-y-4">
       <AlbumCard
         v-for="album in albums"
