@@ -5,9 +5,10 @@
     ></InputText>
     <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-x-8 gap-y-4">
       <AlbumCard
-        v-for="album in albums"
+        v-for="album in filterArtist"
         :key="album.id"
         :album="album"
+        @textToSearch="updateLibrary"
       ></AlbumCard>
     </div>
   </div>
@@ -25,6 +26,7 @@ export default {
   data() {
     return {
       albums: [],
+      artistSearch: 'queen',
     };
   },
   created() {
@@ -38,6 +40,20 @@ export default {
         // handle error
         console.log(error);
       });
+  },
+  methods: {
+    updateLibrary(searchText) {
+      this.artistSearch = searchText;
+      console.log(this.artistSearch);
+      console.log(searchText);
+    },
+  },
+  computed: {
+    filterArtist() {
+      return this.albums.filter((elm) =>
+        elm.author.toLowerCase().includes(this.artistSearch.toLowerCase())
+      );
+    },
   },
 };
 </script>
