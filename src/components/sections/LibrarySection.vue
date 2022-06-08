@@ -44,9 +44,19 @@ export default {
         console.log(error);
       });
   },
+  updated() {
+    this.getGenres();
+  },
   methods: {
     updateLibrary(searchText) {
       this.artistSearch = searchText;
+    },
+    getGenres() {
+      this.data.allGenres = new Set();
+      console.log(this.albums.length);
+      this.albums.forEach((album) => {
+        this.data.allGenres.add(album.genre);
+      });
     },
   },
   computed: {

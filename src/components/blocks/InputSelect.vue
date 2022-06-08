@@ -1,8 +1,13 @@
 <template>
   <select v-model="data.genreSelect" class="px-4 text-center">
     <option value="all" selected>All</option>
-    <option value="pop">pop</option>
-    <option value="rock">rock</option>
+    <option
+      v-for="(genres, index) in data.allGenres"
+      :value="genres"
+      :key="index"
+    >
+      {{ genres }}
+    </option>
   </select>
 </template>
 
