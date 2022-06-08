@@ -1,5 +1,6 @@
 <template>
   <select v-model="data.genreSelect" class="px-4 text-center">
+    <!-- assegnazione dinamica dei generi -->
     <option
       v-for="(genres, index) in data.allGenres"
       :value="genres"

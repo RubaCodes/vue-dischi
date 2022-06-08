@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- utilizzo emit per searchText -->
     <InputText
       class="flex justify-center items-center mx-auto pb-4 gap-4"
       @textToSearch="updateLibrary"
@@ -19,7 +20,7 @@ import AlbumCard from '../blocks/AlbumCard.vue';
 import InputText from '../blocks/InputText.vue';
 //shared data
 import data from '../../shared/data.js';
-
+//axios
 import axios from 'axios';
 
 export default {
@@ -45,12 +46,15 @@ export default {
       });
   },
   updated() {
+    //funzia da updated in poi
     this.getGenres();
   },
   methods: {
     updateLibrary(searchText) {
       this.artistSearch = searchText;
     },
+
+    // ottenimento lista dei generi dagli album
     getGenres() {
       this.data.allGenres = new Set();
       this.data.allGenres.add('All');
@@ -61,6 +65,8 @@ export default {
     },
   },
   computed: {
+    // filtri distinti pre-unione
+
     // filterArtist() {
     //   return this.albums.filter((elm) =>
     //     elm.author.toLowerCase().includes(this.artistSearch.toLowerCase())
@@ -74,6 +80,8 @@ export default {
     //     elm.genre.toLowerCase().includes(this.data.genreSelect.toLowerCase())
     //   );
     // },
+
+    //filtraggio simultaneo dei generi e degli artisti
     totalfilter() {
       return this.albums.filter(
         (elm) =>
