@@ -6,7 +6,7 @@
     ></InputText>
     <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-x-8 gap-y-4">
       <AlbumCard
-        v-for="album in filterTotal"
+        v-for="album in filterGenre"
         :key="album.id"
         :album="album"
       ></AlbumCard>
@@ -52,12 +52,15 @@ export default {
     },
   },
   computed: {
-    filterTotal() {
-      return this.filterGenre.filter((elm) =>
+    filterArtist() {
+      return this.albums.filter((elm) =>
         elm.author.toLowerCase().includes(this.artistSearch.toLowerCase())
       );
     },
     filterGenre() {
+      if (this.data.genreSelect == 'all') {
+        return this.albums;
+      }
       return this.albums.filter((elm) =>
         elm.genre.toLowerCase().includes(this.data.genreSelect.toLowerCase())
       );
