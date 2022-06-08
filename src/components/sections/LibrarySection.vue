@@ -6,7 +6,7 @@
     ></InputText>
     <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-x-8 gap-y-4">
       <AlbumCard
-        v-for="album in filterGenre"
+        v-for="album in totalfilter"
         :key="album.id"
         :album="album"
       ></AlbumCard>
@@ -47,22 +47,31 @@ export default {
   methods: {
     updateLibrary(searchText) {
       this.artistSearch = searchText;
-      console.log(this.artistSearch);
-      console.log(searchText);
     },
   },
   computed: {
-    filterArtist() {
-      return this.albums.filter((elm) =>
-        elm.author.toLowerCase().includes(this.artistSearch.toLowerCase())
-      );
-    },
-    filterGenre() {
-      if (this.data.genreSelect == 'all') {
-        return this.albums;
-      }
-      return this.albums.filter((elm) =>
-        elm.genre.toLowerCase().includes(this.data.genreSelect.toLowerCase())
+    // filterArtist() {
+    //   return this.albums.filter((elm) =>
+    //     elm.author.toLowerCase().includes(this.artistSearch.toLowerCase())
+    //   );
+    // },
+    // filterGenre() {
+    //   if (this.data.genreSelect == 'all') {
+    //     return this.albums;
+    //   }
+    //   return this.albums.filter((elm) =>
+    //     elm.genre.toLowerCase().includes(this.data.genreSelect.toLowerCase())
+    //   );
+    // },
+    totalfilter() {
+      return this.albums.filter(
+        (elm) =>
+          elm.author.toLowerCase().includes(this.artistSearch.toLowerCase()) &&
+          (this.data.genreSelect == 'all'
+            ? elm.author.toLowerCase().includes(this.artistSearch.toLowerCase())
+            : elm.genre
+                .toLowerCase()
+                .includes(this.data.genreSelect.toLowerCase()))
       );
     },
   },
