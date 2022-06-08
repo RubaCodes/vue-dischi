@@ -58,7 +58,6 @@ export default {
     getGenres() {
       this.data.allGenres = new Set();
       this.data.allGenres.add('All');
-      console.log(this.albums.length);
       this.albums.forEach((album) => {
         this.data.allGenres.add(album.genre);
       });
