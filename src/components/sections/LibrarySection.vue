@@ -6,7 +6,7 @@
     ></InputText>
     <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-x-8 gap-y-4">
       <AlbumCard
-        v-for="album in filterArtist"
+        v-for="album in filterTotal"
         :key="album.id"
         :album="album"
       ></AlbumCard>
@@ -17,6 +17,8 @@
 <script>
 import AlbumCard from '../blocks/AlbumCard.vue';
 import InputText from '../blocks/InputText.vue';
+//shared data
+import data from '../../shared/data.js';
 
 import axios from 'axios';
 
@@ -27,6 +29,7 @@ export default {
     return {
       albums: [],
       artistSearch: '',
+      data,
     };
   },
   created() {
@@ -49,9 +52,14 @@ export default {
     },
   },
   computed: {
-    filterArtist() {
-      return this.albums.filter((elm) =>
+    filterTotal() {
+      return this.filterGenre.filter((elm) =>
         elm.author.toLowerCase().includes(this.artistSearch.toLowerCase())
+      );
+    },
+    filterGenre() {
+      return this.albums.filter((elm) =>
+        elm.genre.toLowerCase().includes(this.data.genreSelect.toLowerCase())
       );
     },
   },
