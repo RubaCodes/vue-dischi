@@ -15,9 +15,10 @@
 
 <script>
 import AlbumCard from '../blocks/AlbumCard.vue';
+import InputText from '../blocks/InputText.vue';
 
 import axios from 'axios';
-import InputText from '../blocks/InputText.vue';
+
 export default {
   components: { AlbumCard, InputText },
   name: 'LibrarySection',
