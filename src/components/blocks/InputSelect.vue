@@ -1,6 +1,5 @@
 <template>
   <select v-model="data.genreSelect" class="px-4 text-center">
-    <option value="all" selected>All</option>
     <option
       v-for="(genres, index) in data.allGenres"
       :value="genres"

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
 export default Vue.observable({
-  genreSelect: 'all',
+  genreSelect: 'All',
   allGenres: null,
 });
